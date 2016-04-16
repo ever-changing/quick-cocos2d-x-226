@@ -149,7 +149,7 @@ function dump(value, desciption, nesting)
     end
 
     local traceback = string.split(debug.traceback("", 2), "\n")
-    print("dump from: " .. string.trim(traceback[3]))
+    -- print("dump from: " .. string.trim(traceback[3]))
 
     local function _dump(value, desciption, indent, nest, keylen)
         desciption = desciption or "<var>"

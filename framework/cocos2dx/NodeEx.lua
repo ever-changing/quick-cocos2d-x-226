@@ -128,11 +128,14 @@ end
 
 function Node:registerScriptTouchHandler(handler, isMultiTouches)
     PRINT_DEPRECATED("Node.registerScriptTouchHandler() is deprecated, please use Node.addNodeEventListener()")
+    print("class name is ", self.__cname)
+
     if isMultiTouches then
         self:setTouchMode(c.TOUCH_MODE_ALL_AT_ONCE)
     else
         self:setTouchMode(c.TOUCH_MODE_ONE_BY_ONE)
     end
+    self.__touch_handler = hander
     return self:addNodeEventListener(c.NODE_TOUCH_EVENT, function(event)
         if event.mode == c.TOUCH_MODE_ALL_AT_ONCE then
             local points = {}
@@ -146,6 +149,16 @@ function Node:registerScriptTouchHandler(handler, isMultiTouches)
             return handler(event.name, event.x, event.y, event.prevX, event.prevY)
         end
     end)
+end
+
+function Node:unregisterScriptTouchHandler()
+    print('call unregisterScriptHandler()')
+    if self.__touch_handler then
+        print("try remove touch handler auto")
+        self:removeNodeEventListener(c.NODE_TOUCH_EVENT, self.__touch_handler)
+    else
+        print("no touch handler, it's safe here. :)")
+    end
 end
 
 Node.scheduleUpdate_ = Node.scheduleUpdate
@@ -190,4 +203,8 @@ function Node:setCascadeOpacityEnabledRecursively(enabled)
             end
         end
     end
+end
+
+function Node:removeSelf(cleanup)
+    self:removeFromParent(cleanup)
 end
