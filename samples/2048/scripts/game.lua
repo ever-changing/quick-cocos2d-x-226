@@ -5,6 +5,10 @@ require("framework.init")
 game = {}
 
 function game.startup()
+	local i = nil
+	i.f()
+
+	
     CCFileUtils:sharedFileUtils():addSearchPath("res/")
 
     game.enterMainScene()

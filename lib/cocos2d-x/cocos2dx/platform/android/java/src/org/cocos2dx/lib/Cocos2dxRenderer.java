@@ -36,7 +36,7 @@ public class Cocos2dxRenderer implements GLSurfaceView.Renderer {
 	private final static long NANOSECONDSPERSECOND = 1000000000L;
 	private final static long NANOSECONDSPERMICROSECOND = 1000000;
 
-	private static long sAnimationInterval = (long) (1.0 / 60 * Cocos2dxRenderer.NANOSECONDSPERSECOND);
+	private static long sAnimationInterval = (long) (1.0 / 30 * Cocos2dxRenderer.NANOSECONDSPERSECOND);
 
 	// ===========================================================
 	// Fields
