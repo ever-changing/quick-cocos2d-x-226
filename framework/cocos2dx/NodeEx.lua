@@ -128,7 +128,6 @@ end
 
 function Node:registerScriptTouchHandler(handler, isMultiTouches)
     PRINT_DEPRECATED("Node.registerScriptTouchHandler() is deprecated, please use Node.addNodeEventListener()")
-    print("class name is ", self.__cname)
 
     if isMultiTouches then
         self:setTouchMode(c.TOUCH_MODE_ALL_AT_ONCE)
