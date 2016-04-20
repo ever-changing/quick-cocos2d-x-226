@@ -201,11 +201,11 @@ class FilesPacker
         // prepare for pack
         foreach ($files as $key => $path)
         {
-           # if (substr($path, -4) != '.lua')
-            #{
-            #    unset($files[$key]);
-            #}
-           # else
+           if (substr($path, -4) != '.png' && substr($path, -4) != '.jpg' && substr($path, -4) != '.ccz')
+            {
+               unset($files[$key]);
+            }
+           else
             {
                 #$moduleName = substr(substr($path, $this->config['srcpathLength']), 0, -4);
                 $moduleName = substr($path, $this->config['srcpathLength']);
